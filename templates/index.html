@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+  Image Authentication
+{% endblock %}
+
+{% block content %}
+  <h1 class="title">Image Authentication</h1>
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div id="imgAuth" style="width: 306px; height: 306px; position: relative; border: solid 3px;">
+      <input id="image_1" type="radio" value="{{ path1 }}" name="image">
+      <label class="selectImgArea" for="image_1"><img class="selectImg" src="{{ path1 }}"></label>
+      <input id="image_2" type="radio" value="{{ path2 }}" name="image">
+      <label class="selectImgArea" for="image_2"><img class="selectImg" src="{{ path2 }}"></label>
+      <input id="image_3" type="radio" value="{{ path3 }}" name="image">
+      <label class="selectImgArea" for="image_3"><img class="selectImg" src="{{ path3 }}"></label>
+      <input id="image_4" type="radio" value="{{ path4 }}" name="image">
+      <label class="selectImgArea" for="image_4"><img class="selectImg" src="{{ path4 }}"></label>
+      <input id="image_5" type="radio" value="{{ path5 }}" name="image">
+      <label class="selectImgArea" for="image_5"><img class="selectImg" src="{{ path5 }}"></label>
+      <input id="image_6" type="radio" value="{{ path6 }}" name="image">
+      <label class="selectImgArea" for="image_6"><img class="selectImg" src="{{ path6 }}"></label>
+      <input id="image_7" type="radio" value="{{ path7 }}" name="image">
+      <label class="selectImgArea" for="image_7"><img class="selectImg" src="{{ path7 }}"></label>
+      <input id="image_8" type="radio" value="{{ path8 }}" name="image">
+      <label class="selectImgArea" for="image_8"><img class="selectImg" src="{{ path8 }}"></label>
+      <input id="image_9" type="radio" value="{{ path9 }}" name="image">
+      <label class="selectImgArea" for="image_9"><img class="selectImg" src="{{ path9 }}"></label>
+    </div>
+    <button type="button" class="btn btn-primary" style="width: 306px; position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);" onclick="send()">送信</button>
+  </div>
+  <script>
+    let correctUrl = "{{ url_for('correct') }}";
+    let wrongUrl = "{{ url_for('wrong') }}";
+    const answerImage = "{{ answer_image }}";
+
+    const radioButtons = document.querySelectorAll('input[name="image"]');
+
+    radioButtons.forEach((button) => {
+      button.addEventListener('change', (event) => {
+        console.log(`Selected image: ${event.target.value}`);
+      });
+    });
+
+    function send() {
+      const selectedImage = document.querySelector('input[name="image"]:checked').value;
+
+      if (selectedImage === answerImage) {
+        window.location.href = correctUrl;
+      } else {
+        window.location.href = wrongUrl;
+      }
+    }
+    console.log(answerImage);
+  </script>
+{% endblock content %}
+
+

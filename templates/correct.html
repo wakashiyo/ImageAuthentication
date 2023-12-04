@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+  Login Success
+{% endblock %}
+
+{% block content %}
+    <h1 class="SuccessPage">Success!</h1>
+    <h2 class="UserSuccess">You are logged in.</h2>
+    <p class="SuccessMessage"></p>
+    <ul class="link">
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+{% endblock content %}
+
+
